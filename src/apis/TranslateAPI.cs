@@ -157,9 +157,19 @@ namespace LiveCaptionsTranslator.apis
                 }
             }
 
-            var requestData = LLMRequestDataFactory.Create("Ollama", config.ModelName, messages, config.Temperature);
+            var requestData = new
+            {
+                model = config.ModelName,
+                messages,
+                stream = false,
+                options = new
+                {
+                    temperature = config.Temperature,
+                    num_predict = 128
+                }
+            };
 
-            string jsonContent = JsonSerializer.Serialize(requestData, requestData.GetType());
+            string jsonContent = JsonSerializer.Serialize(requestData);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
             client.DefaultRequestHeaders.Clear();
 
@@ -188,7 +198,10 @@ namespace LiveCaptionsTranslator.apis
                 return RegexPatterns.ModelThinking().Replace(output, "");
             }
             else
-                return $"[ERROR] Translation Failed: HTTP Error - {response.StatusCode}";
+            {
+                string responseString = await response.Content.ReadAsStringAsync();
+                return $"[ERROR] Translation Failed: HTTP Error - {response.StatusCode}: {responseString}";
+            }
         }
 
         public static async Task<string> OpenRouter(string text, CancellationToken token = default)
