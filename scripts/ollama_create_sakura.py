@@ -15,7 +15,7 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument(
         "--system",
         # default=(
-        #     "You are a helpful assistant."
+        #     "你是一个将日语翻译为中文的助手。"
         # ),
         default="",
     )
