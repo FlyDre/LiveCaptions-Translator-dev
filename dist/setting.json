@@ -22,7 +22,7 @@
     "Opacity": 150
   },
   "WindowBounds": {
-    "MainWindow": "629,811,813,199",
+    "MainWindow": "604,863,810,170",
     "OverlayWindow": "635,765,650,135"
   },
   "Configs": {
@@ -35,16 +35,16 @@
     "Ollama": [
       {
         "ApiUrl": "http://localhost:11434",
-        "ModelName": "sakura-1.5b",
-        "Temperature": 0.2
+        "ModelName": "qwen2.5:3b",
+        "Temperature": 0
       }
     ],
     "OpenAI": [
       {
-        "ApiKey": "",
-        "ApiUrl": "",
-        "ModelName": "",
-        "Temperature": 1
+        "ApiKey": "sk-EJyLw4kMq1z6bjtT4W4IGELstUXRCPtB9SSAtvmKo1ns78ZL",
+        "ApiUrl": "https://api.squarefaceicon.org/v1/chat/completions",
+        "ModelName": "gpt-5.2",
+        "Temperature": 0.1
       }
     ],
     "OpenRouter": [

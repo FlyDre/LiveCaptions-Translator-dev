@@ -47,8 +47,8 @@
                 Margin="20,10,20,10"
                 TextAlignment="Left"
                 TextWrapping="Wrap">
-                <Run Text="LiveCaptions Translator is based on Windows LiveCaptions." />
-                <Run Text="Before your first running, you need to configure it according to the following steps:&#x0A;" />
+                <Run Text="LiveCaptions Translator 基于 Windows LiveCaptions 实现。" />
+                <Run Text="在正式运行前, 你需要根据以下步骤进行配置:&#x0A;" />
                 <Run Text="&#x0A;1. Open Windows LiveCaptions and follow the guide to download the necessary files for on-device speech recognition and language packs." />
                 <Run Text="&#x0A;2. Click the" />
                 <Run FontWeight="Bold" Text="⚙️ gear" />
