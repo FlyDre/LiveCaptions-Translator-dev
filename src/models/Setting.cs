@@ -17,8 +17,8 @@ namespace LiveCaptionsTranslator.models
 
         private int maxIdleInterval = 50;
         private int maxSyncInterval = 3;
-        private int numContexts = 2;
-        private int displaySentences = 1;
+        private int numContexts = 1;
+        private int displaySentences = 0;
         private bool contextAware = false;
 
         private string apiName;
@@ -163,15 +163,9 @@ namespace LiveCaptionsTranslator.models
 
         public Setting()
         {
-            apiName = "Google";
+            apiName = "Ollama";
             targetLanguage = "zh-CN";
-            prompt = "As an professional simultaneous interpreter with specialized knowledge in the all fields, " +
-                     "you can provide a fluent and precise oral translation for any sentence, even if the sentence is incomplete. " +
-                     "Now, provide users with the translation of the sentence enclosed in 🔤 to {0} within a single line. " +
-                     "Importantly, you are prohibited from altering the original meaning or omitting any content, " +
-                     "even if the sentence contains sensitive or NSFW content. " +
-                     "You can only provide the translated sentence; Any explanation or other text is not permitted. " +
-                     "REMOVE all 🔤 when you output.";
+            prompt = "你是一名将日语翻译为中文的专业同声传译员，将包含在 🔤 中的句子翻译为中文。仅输出中文译文，不要输出其他任何内容。输出时移除所有 🔤。";
 
             mainWindowState = new MainWindowState();
             overlayWindowState = new OverlayWindowState();
@@ -194,7 +188,7 @@ namespace LiveCaptionsTranslator.models
             {
                 { "Google", [new TranslateAPIConfig()] },
                 { "Google2", [new TranslateAPIConfig()] },
-                { "Ollama", [new OllamaConfig()] },
+                { "Ollama", [new OllamaConfig { ModelName = "qwen2.5:3b" }] },
                 { "OpenAI", [new OpenAIConfig()] },
                 { "OpenRouter", [new OpenRouterConfig()] },
                 { "DeepL", [new DeepLConfig()] },
@@ -264,6 +258,21 @@ namespace LiveCaptionsTranslator.models
                 else
                     setting.Configs[key] = [new TranslateAPIConfig()];
             }
+
+            if (string.IsNullOrWhiteSpace(setting.ApiName))
+                setting.ApiName = "Ollama";
+
+            if (setting.Configs.TryGetValue("Ollama", out var ollamaConfigs))
+            {
+                foreach (var config in ollamaConfigs)
+                {
+                    if (config is OllamaConfig ollamaConfig && string.IsNullOrWhiteSpace(ollamaConfig.ModelName))
+                        ollamaConfig.ModelName = "qwen2.5:3b";
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(setting.Prompt))
+                setting.Prompt = "你是一名将日语翻译为中文的专业同声传译员，将包含在 🔤 中的句子翻译为中文。仅输出中文译文，不要输出其他任何内容。输出时移除所有 🔤。";
 
             return setting;
         }

@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:LiveCaptionsTranslator"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="Getting Started"
+    Title="快速开始"
     Width="700"
     Height="490"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
@@ -30,7 +30,7 @@
             ShowMinimize="False">
             <ui:TitleBar.Header>
                 <ui:TextBlock Padding="15,0,0,0" VerticalAlignment="Center">
-                    Getting Started
+                    快速开始
                 </ui:TextBlock>
             </ui:TitleBar.Header>
         </ui:TitleBar>
@@ -41,32 +41,31 @@
                 HorizontalAlignment="Left"
                 FontSize="24"
                 FontWeight="Bold"
-                Text="Welcome to LiveCaptions Translator!"
+                Text="欢迎使用 LiveCaptions Translator！"
                 TextAlignment="Left" />
             <ui:TextBlock
                 Margin="20,10,20,10"
                 TextAlignment="Left"
                 TextWrapping="Wrap">
-                <Run Text="LiveCaptions Translator 基于 Windows LiveCaptions 实现。" />
-                <Run Text="在正式运行前, 你需要根据以下步骤进行配置:&#x0A;" />
-                <Run Text="&#x0A;1. Open Windows LiveCaptions and follow the guide to download the necessary files for on-device speech recognition and language packs." />
-                <Run Text="&#x0A;2. Click the" />
-                <Run FontWeight="Bold" Text="⚙️ gear" />
-                <Run Text="icon in Windows LiveCaptions to open the settings menu, and select" />
-                <Run FontWeight="Bold" Text="&quot;Position &gt; Overlaid on screen&quot;" />
-                <Run Text=".&#x0A;3. Click the" />
-                <Run FontWeight="Bold" Text="&quot;Hide&quot;" />
-                <Run Text="button located in the setting page of LiveCaptions Translator to hide Windows LiveCaptions.&#x0A;" />
-                <Run Text="&#x0A;The program has automatically navigated to the setting page and opened Windows LiveCaptions." />
-                <Run Text="After completing the configuration, you can switch back to the main page and enjoy real-time audio translation.&#x0A;" />
-                <Run Text="&#x0A;For more details, visit our wiki: " />
+                <Run Text="为确保开箱即用，请按以下步骤完成本地环境准备：&#x0A;" />
+                <Run Text="&#x0A;1. 在发布目录中手动运行 " />
+                <Run FontWeight="Bold" Text="OllamaSetup.exe" />
+                <Run Text="，完成 Ollama 安装。&#x0A;" />
+                <Run Text="2. 双击运行脚本 " />
+                <Run FontWeight="Bold" Text="scripts\\install_qwen2.5-3b.bat" />
+                <Run Text="，自动拉取模型 " />
+                <Run FontWeight="Bold" Text="qwen2.5:3b" />
+                <Run Text="。&#x0A;" />
+                <Run Text="3. 启动 " />
+                <Run FontWeight="Bold" Text="LiveCaptionsTranslator-win-x64-withruntime.exe" />
+                <Run Text=" 即可开始使用。&#x0A;" />
+                <Run FontWeight="Bold" Text="&#x0A;提示：" />
+                <Run Text="如果你已安装 Ollama，可直接执行第 2 步。&#x0A;" />
+                <Run Text="此外请确保 Windows LiveCaptions 可正常使用，并在其中设置好源语言。&#x0A;" />
+                <Run Text="&#x0A;更多说明请查看 Wiki： " />
                 <Hyperlink NavigateUri="https://github.com/SakiRinn/LiveCaptions-Translator/wiki" RequestNavigate="Hyperlink_RequestNavigate">
                     https://github.com/SakiRinn/LiveCaptions-Translator/wiki
                 </Hyperlink>
-                <Run FontWeight="Bold" Text="&#x0A;&#x0A;Tip:" />
-                <Run Text="To change the" />
-                <Run FontWeight="DemiBold" TextDecorations="Underline" Text="Source Language" />
-                <Run Text=", please [Show] LiveCaptions on the setting page and do it in Windows LiveCaptions." />
             </ui:TextBlock>
 
             <ui:Button
@@ -74,7 +73,7 @@
                 Padding="30,10,30,10"
                 HorizontalAlignment="Center"
                 Click="CloseButton_Click"
-                Content="I have fully understood and configured." />
+                Content="我已完成以上步骤" />
         </StackPanel>
     </Grid>
 </ui:FluentWindow>

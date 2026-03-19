@@ -9,7 +9,7 @@
 *.user
 *.userosscache
 *.sln.docstates
-
+OllamaSetup.exe
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
